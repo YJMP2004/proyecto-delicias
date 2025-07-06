@@ -1,0 +1,463 @@
+/* 1. Variables CSS */
+:root {
+    --color-primary: #8B4513; /* Marrón oscuro para el header y footer */
+    --color-secondary: #D2B48C; /* Marrón claro para botones y secciones */
+    --color-text-dark: #333;
+    --color-text-light: #f5f5dc; /* Blanco crema para texto en fondos oscuros */
+    --color-background-light: #f8f5ed; /* Fondo general de la página */
+    --color-highlight: #DAA520; /* Dorado para títulos de sección */
+
+    --font-primary: 'Georgia', serif;
+    --font-secondary: 'Arial', sans-serif;
+
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+    --border-radius-sm: 5px;
+    --border-radius-md: 8px;
+}
+
+/* 2. Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-secondary);
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    background-color: var(--color-background-light);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Hereda el color del padre por defecto */
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* 3. Header */
+.header {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: var(--spacing-md) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header .logo {
+    font-family: var(--font-primary);
+    font-size: 2em;
+    margin-left: var(--spacing-lg);
+}
+
+.header .nav-menu ul {
+    display: flex;
+    margin-right: var(--spacing-lg);
+}
+
+.header .nav-menu li {
+    margin-left: var(--spacing-md);
+}
+
+.header .nav-menu a {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Estilos para los botones de navegación */
+.header .nav-menu a.button-nav {
+    background-color: var(--color-secondary);
+    color: var(--color-text-dark);
+}
+
+.header .nav-menu a.button-nav:hover {
+    background-color: #c0a07a; /* Un tono ligeramente más oscuro */
+}
+
+/* Estilo para el botón de sesión que parece diferente en la imagen */
+.header .nav-menu a.button-nav.session {
+    background-color: #D2B48C; /* Blanco */
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-text-dark); /* Borde para que se distinga */
+}
+
+.header .nav-menu a.button-nav.session:hover {
+    background-color: #c0a07a;
+}
+
+
+/* 4. Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: var(--color-highlight);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.subsection-title {
+    font-size: 1.8em;
+    color: var(--color-highlight);
+    margin-bottom: var(--spacing-md);
+}
+
+/* 5. Componentes Reutilizables */
+/* --- Componente: Hero Section (página principal) --- */
+.hero-section {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    background-color: var(--color-background-light); /* Para asegurar que el fondo se vea bien */
+}
+
+.hero-section .logo-large {
+    width: 200px; /* Ajusta según sea necesario */
+    margin: 0 auto var(--spacing-md);
+}
+
+.hero-section h1 {
+    font-size: 4em;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-dark); /* Asegurar que el color sea visible */
+}
+
+.hero-section p {
+    font-size: 1.5em;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+/* --- Componente: Recipe Grid --- */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.recipe-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.recipe-card h3 {
+    padding: var(--spacing-sm);
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* --- Componente: Recipe Detail (para las páginas de receta) --- */
+.recipe-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    background-color: #fff;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    flex-direction: column; /* Por defecto, apilados verticalmente para pantallas pequeñas */
+}
+
+.recipe-detail .recipe-image {
+    width: 100%; /* La imagen ocupa todo el ancho disponible en móvil */
+    max-width: 400px; /* Limita el ancho máximo de la imagen incluso en pantallas grandes */
+    margin-bottom: var(--spacing-md); /* Espacio debajo en móvil */
+    /* Centrar la imagen en móvil si es más pequeña que el ancho total */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Aseguramos que la imagen dentro del contenedor no se desborde */
+.recipe-detail .recipe-image img {
+    width: 100%;
+    height: auto;
+    display: block; /* Para eliminar cualquier espacio extra debajo de la imagen */
+    border-radius: var(--border-radius-sm); /* Un poco de borde redondeado para estética */
+}
+
+
+.recipe-detail .recipe-ingredients,
+.recipe-detail .recipe-instructions {
+    flex: 1 1 400px; /* Permite que estos bloques crezcan */
+}
+
+/* Para pantallas más grandes, coloca la imagen a la izquierda con un ancho fijo */
+@media (min-width: 768px) {
+    .recipe-detail {
+        flex-direction: row; /* Coloca los elementos en fila */
+        align-items: flex-start; /* Alinea los elementos en la parte superior */
+    }
+
+    .recipe-detail .recipe-image {
+        flex: 0 0 350px; /* Aquí controlamos el ancho fijo del contenedor de la imagen en escritorios */
+                              /* flex-grow: 0 (no crece), flex-shrink: 0 (no se encoge), flex-basis: 350px (ancho base) */
+        margin-right: var(--spacing-lg); /* Espacio a la derecha de la imagen */
+        margin-bottom: 0; /* Elimina el margen inferior cuando está a la izquierda */
+    }
+
+    .recipe-detail .recipe-ingredients,
+    .recipe-detail .recipe-instructions {
+        flex: 1; /* Permite que el contenido (ingredientes/instrucciones) ocupe el espacio restante */
+    }
+}
+
+/* Ajustes para los títulos dentro de recipe-detail si fuera necesario, para que no salgan del flujo */
+.recipe-detail h2,
+.recipe-detail h3 {
+    width: 100%; /* Asegura que los títulos ocupen todo el ancho disponible en su sección */
+}
+
+.recipe-detail .recipe-ingredients,
+.recipe-detail .recipe-instructions {
+    flex: 1 1 400px;
+}
+
+.recipe-detail h2 {
+    font-size: 2em;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.recipe-detail h3 {
+    color: var(--color-highlight);
+    margin-bottom: var(--spacing-sm);
+}
+
+.recipe-detail ul {
+    list-style: disc;
+    margin-left: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.recipe-detail ol {
+    list-style: decimal;
+    margin-left: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.recipe-detail ol li {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* --- Componente: Login/Register Form --- */
+.login-section {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.login-form-container {
+    background-color: #f2e7e7; /* Fondo rosa claro */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    max-width: 400px;
+    margin: var(--spacing-md) auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.login-form-container h2 {
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.login-form-container p {
+    font-size: 0.9em;
+    margin-bottom: var(--spacing-md);
+}
+
+.login-form-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-form-container input[type="email"],
+.login-form-container input[type="password"] {
+    width: calc(100% - 20px); /* Ajusta el ancho para dejar espacio para el padding */
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-sm);
+    background-color: #fff;
+}
+
+.login-form-container .forgot-password {
+    text-align: right;
+    margin-bottom: var(--spacing-md);
+}
+
+.login-form-container .forgot-password a {
+    color: var(--color-primary);
+    font-size: 0.9em;
+}
+
+.login-form-container .button-login {
+    background-color: #705555; /* Marrón oscuro para el botón de login */
+    color: #fff;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 1.1em;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.login-form-container .button-login:hover {
+    background-color: #5a4040;
+}
+
+/* Beneficios al iniciar sesión */
+.benefits-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    text-align: left; /* Alineamos el texto a la izquierda */
+}
+
+.benefits-list .benefit-item {
+    flex: 1 1 280px; /* Permite que los elementos se ajusten en el ancho */
+    padding: var(--spacing-sm);
+    background-color: #f2e7e7; /* Mismo fondo que el formulario para consistencia */
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.benefits-list .benefit-item ul {
+    list-style: disc; /* Usamos viñetas para los ítems */
+    margin-left: var(--spacing-md);
+}
+
+.benefits-list .benefit-item ul li {
+    margin-bottom: 5px;
+}
+
+/* 6. Footer */
+.footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    font-size: 0.9em;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+}
+
+.footer .footer-links a {
+    color: var(--color-text-light);
+    margin: 0 10px;
+}
+
+.footer .social-links {
+    margin-top: var(--spacing-sm);
+}
+
+.footer .social-links a {
+    margin: 0 5px;
+    color: #fff; /* Color específico para iconos de redes sociales */
+    font-weight: bold; /* Para simular un botón o un enlace más fuerte */
+}
+
+/* 7. Utilidades (Opcional, para clases de ayuda) */
+.text-center {
+    text-align: center;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: var(--spacing-sm) 0;
+    }
+
+    .header .nav-menu ul {
+        flex-direction: column;
+        margin-right: 0;
+        margin-top: var(--spacing-sm);
+    }
+
+    .header .nav-menu li {
+        margin: 5px 0;
+    }
+
+    .header .logo {
+        margin-left: 0;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .main-content {
+        padding: var(--spacing-md);
+    }
+
+    .recipe-detail {
+        flex-direction: column;
+    }
+
+    .benefits-list {
+        flex-direction: column;
+    }
+
+    .benefits-list .benefit-item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-section p {
+        font-size: 1.2em;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+}
